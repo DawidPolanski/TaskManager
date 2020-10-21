@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -47,22 +48,18 @@ namespace TaskManager.Controllers
         // GET: TaskController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            return View(tasks.FirstOrDefault(x => x.TaskId == id));
         }
 
         // POST: TaskController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, TaskModel taskModel)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            TaskModel task = tasks.FirstOrDefault(x => x.TaskId == id);
+            task.Name = taskModel.Name;
+            task.Description = taskModel.Description;
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: TaskController/Delete/5
