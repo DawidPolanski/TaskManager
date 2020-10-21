@@ -4,42 +4,44 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using TaskManager.Models;
 
 namespace TaskManager.Controllers
 {
     public class TaskController : Controller
     {
+        private static IList<TaskModel> tasks = new List<TaskModel>()
+        {
+            new TaskModel() { TaskId = 1 , Name = "Wizyta u lekarza" , Description = "Godzina 17:00" , Done=false},
+            new TaskModel() { TaskId = 2 , Name = "Zrobić obiad" , Description = "Pierogi" , Done=false},
+
+        };
         // GET: TaskController
         public ActionResult Index()
         {
-            return View();
+            return View(tasks);
         }
 
         // GET: TaskController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            return View(tasks.FirstOrDefault(x => x.TaskId == id));
         }
 
         // GET: TaskController/Create
         public ActionResult Create()
         {
-            return View();
+            return View(new TaskModel());
         }
 
         // POST: TaskController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(TaskModel taskModel)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            taskModel.TaskId = tasks.Count + 1;
+            tasks.Add(taskModel);
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: TaskController/Edit/5
