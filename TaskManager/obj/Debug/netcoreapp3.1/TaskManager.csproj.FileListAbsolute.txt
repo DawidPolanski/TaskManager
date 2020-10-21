@@ -109,3 +109,4 @@ C:\Users\Dawid\source\repos\TaskManager\TaskManager\obj\Debug\netcoreapp3.1\Razo
 C:\Users\Dawid\source\repos\TaskManager\TaskManager\obj\Debug\netcoreapp3.1\Razor\Views\Task\Create.cshtml.g.cs
 C:\Users\Dawid\source\repos\TaskManager\TaskManager\obj\Debug\netcoreapp3.1\Razor\Views\Task\Details.cshtml.g.cs
 C:\Users\Dawid\source\repos\TaskManager\TaskManager\obj\Debug\netcoreapp3.1\Razor\Views\Task\Edit.cshtml.g.cs
+C:\Users\Dawid\source\repos\TaskManager\TaskManager\obj\Debug\netcoreapp3.1\Razor\Views\Task\Delete.cshtml.g.cs

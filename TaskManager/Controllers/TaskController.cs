@@ -65,22 +65,17 @@ namespace TaskManager.Controllers
         // GET: TaskController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            return View(tasks.FirstOrDefault(x => x.TaskId == id));
         }
 
         // POST: TaskController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id, TaskModel taskModel)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            TaskModel task = tasks.FirstOrDefault(x => x.TaskId == id);
+            tasks.Remove(task);
+            return RedirectToAction(nameof(Index));
         }
     }
 }
