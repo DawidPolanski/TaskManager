@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using TaskManager.Models;
 
@@ -8,30 +9,45 @@ namespace TaskManager.Repositories
 {
     public class TaskRepository : ITaskRepository
     {
-        public TaskModel Get(int taskId)
+        private readonly TaskManagerContext _context;
+        public TaskRepository(TaskManagerContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
         }
+        public TaskModel Get(int taskId)
+        => _context.Tasks.SingleOrDefault(x => x.TaskId == taskId);
 
         public IQueryable<TaskModel> GetAllActivie()
-        {
-            throw new NotImplementedException();
-        }
+        => _context.Tasks.Where(x => !x.Done);
 
         public void Add(TaskModel task)
         {
-            throw new NotImplementedException();
+            _context.Tasks.Add(task);
+            _context.SaveChanges();
         }
 
         public void Update(int taskId, TaskModel task)
         {
-            throw new NotImplementedException();
+            var result = _context.Tasks.SingleOrDefault(x => x.TaskId == taskId);
+            if(result  != null)
+            {
+                result.Name = task.Name;
+                result.Description = task.Description;
+                result.Done = task.Done;
+                _context.SaveChanges();
+            }
         }
 
 
         public void Delete(int taskId)
         {
-            throw new NotImplementedException();
+            var result = _context.Tasks.SingleOrDefault(x => x.TaskId == taskId);
+            if(result != null)
+            {
+                _context.Tasks.Remove(result);
+                _context.SaveChanges();
+            }
+            
         }
     }
 }
