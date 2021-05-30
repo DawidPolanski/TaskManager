@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -11,10 +12,15 @@ namespace TaskManager.Repositories
     public class GroupsRepository : IGroupsRepository
     {
         private readonly TaskManagerContext _context;
+
         public GroupsRepository(TaskManagerContext context)
         {
             _context = context;
         }
+
+        public IQueryable<GroupsModel> GetAllGroups()
+            => _context.Groups.Where(x => !x.GroupVisible);
+
         public void Add(GroupsModel groups)
         {
             _context.Groups.Add(groups);
@@ -41,6 +47,7 @@ namespace TaskManager.Repositories
             if (result != null)
             {
                 result.NameOfGroup = groups.NameOfGroup;
+                result.GroupVisible = groups.GroupVisible;
                 _context.SaveChanges();
             }
         }

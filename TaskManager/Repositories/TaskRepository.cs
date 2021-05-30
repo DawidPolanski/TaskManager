@@ -38,7 +38,6 @@ namespace TaskManager.Repositories
             }
         }
 
-
         public void Delete(int taskId)
         {
             var result = _context.Tasks.SingleOrDefault(x => x.TaskId == taskId);
@@ -47,7 +46,6 @@ namespace TaskManager.Repositories
                 _context.Tasks.Remove(result);
                 _context.SaveChanges();
             }
-
         }
     }
 }
