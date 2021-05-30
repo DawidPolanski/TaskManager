@@ -12,6 +12,6 @@ namespace TaskManager.Repositories
         void Add(GroupsModel groups);
         void Update(int groupsId, GroupsModel groups);
         void Delete(int groupsId);
-        
+        IQueryable<GroupsModel> GetAllGroups();
     }
 }

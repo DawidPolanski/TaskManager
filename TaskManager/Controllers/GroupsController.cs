@@ -24,7 +24,7 @@ namespace TaskManager.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            return View(_groupsRepository.GetAllGroups());
         }
 
         // POST: GroupsController/Create
@@ -72,6 +72,13 @@ namespace TaskManager.Controllers
         public ActionResult Delete(int id, GroupsModel groupsModel)
         {
             _groupsRepository.Delete(id);
+            return RedirectToAction(nameof(Index));
+        }
+        public ActionResult GroupVisible(int id)
+        {
+            GroupsModel group = _groupsRepository.Get(id);
+            group.GroupVisible = true;
+            _groupsRepository.Update(id, group);
             return RedirectToAction(nameof(Index));
         }
     }
