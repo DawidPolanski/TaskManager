@@ -13,5 +13,6 @@ namespace TaskManager.Models
         }
 
         public DbSet<TaskModel> Tasks { get; set; }
+        public DbSet<GroupsModel> Groups { get; set; }
     }
 }

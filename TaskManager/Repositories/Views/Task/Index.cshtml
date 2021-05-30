@@ -1,0 +1,50 @@
+﻿@model IEnumerable<TaskManager.Models.TaskModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="display-4">Lista zadań</h1>
+
+    <a class="btn btn-primary" asp-action="Create">Dodaj zadanie</a>
+    <a class="btn btn-primary" asp-controller="Groups" asp-action="Create">Dodaj grupe</a>
+        <button style="float:right" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Wyświetl grupy
+        </button>
+
+<div class="dropdown-menu">
+    <a class="dropdown-item" href="https://www.w3schools.com/tags/att_a_href.asp">Action</a>
+    <a class="dropdown-item" href="#">Another action</a>
+    <a class="dropdown-item" href="#">Something else here</a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="#">Separated link</a>
+</div>
+
+<div class="shadow-lg p-3 mb-5 bg-white rounded">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td style="width:65%">
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td style="width:35%">
+                        @Html.ActionLink("Gotowe", "Done", new { id = item.TaskId }, new { @class = "btn btn-success" })
+                        @Html.ActionLink("Szczegóły", "Details", new { id = item.TaskId }, new { @class = "btn btn-info" })
+                        @Html.ActionLink("Edytuj", "Edit", new { id = item.TaskId }, new { @class = "btn btn-warning" })
+                        @Html.ActionLink("Usuń", "Delete", new { id = item.TaskId }, new { @class = "btn btn-danger" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

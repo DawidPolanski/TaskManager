@@ -29,7 +29,7 @@ namespace TaskManager.Repositories
         public void Update(int taskId, TaskModel task)
         {
             var result = _context.Tasks.SingleOrDefault(x => x.TaskId == taskId);
-            if(result  != null)
+            if (result != null)
             {
                 result.Name = task.Name;
                 result.Description = task.Description;
@@ -42,12 +42,12 @@ namespace TaskManager.Repositories
         public void Delete(int taskId)
         {
             var result = _context.Tasks.SingleOrDefault(x => x.TaskId == taskId);
-            if(result != null)
+            if (result != null)
             {
                 _context.Tasks.Remove(result);
                 _context.SaveChanges();
             }
-            
+
         }
     }
 }
