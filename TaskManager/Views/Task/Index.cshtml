@@ -6,11 +6,11 @@
 
 <h1 class="display-4">Lista zadań</h1>
 
-    <a class="btn btn-primary" asp-action="Create">Dodaj zadanie</a>
-    <a class="btn btn-primary" asp-controller="Groups" asp-action="Create">Dodaj grupe</a>
-        <button style="float:right" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Wyświetl grupy
-        </button>
+<a class="btn btn-primary" asp-action="Create">Dodaj zadanie</a>
+<a class="btn btn-primary" asp-controller="Groups" asp-action="Create">Dodaj grupe</a>
+<button style="float:right" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Wyświetl grupy
+</button>
 
 <div class="dropdown-menu">
     <a class="dropdown-item" href="https://www.w3schools.com/tags/att_a_href.asp">Action</a>
@@ -27,7 +27,10 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Name)
                 </th>
-                <th></th>
+
+                <th>
+
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -36,6 +39,7 @@
                 <tr>
                     <td style="width:65%">
                         @Html.DisplayFor(modelItem => item.Name)
+                        @Html.DisplayFor(modelItem => item.Group.NameOfGroup)
                     </td>
                     <td style="width:35%">
                         @Html.ActionLink("Gotowe", "Done", new { id = item.TaskId }, new { @class = "btn btn-success" })
