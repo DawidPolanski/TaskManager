@@ -28,8 +28,6 @@ namespace TaskManager.Controllers
         }
 
         // POST: GroupsController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Create()
         {
             return View(new GroupsModel());

@@ -179,3 +179,4 @@ C:\Users\Dawid\source\repos\TaskManager\TaskManager\obj\Debug\netcoreapp3.1\Razo
 C:\Users\Dawid\source\repos\TaskManager\TaskManager\obj\Debug\netcoreapp3.1\Razor\Views\_ViewStart.cshtml.g.cs
 C:\Users\Dawid\source\repos\TaskManager\TaskManager\obj\Debug\netcoreapp3.1\TaskManager.csproj.AssemblyReference.cache
 C:\Users\Dawid\source\repos\TaskManager\TaskManager\obj\Debug\netcoreapp3.1\Razor\Views\Groups\Edit.cshtml.g.cs
+C:\Users\Dawid\source\repos\TaskManager\TaskManager\obj\Debug\netcoreapp3.1\Razor\Views\Groups\Delete.cshtml.g.cs
