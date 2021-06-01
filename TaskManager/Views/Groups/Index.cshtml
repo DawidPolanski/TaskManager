@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Lista twoich grup</h1>
+<h1 class="display-4">Lista grup</h1>
 
 
 <div class="btn-group">
@@ -12,6 +12,7 @@
         <table class="table">
             <thead>
                 <tr>
+                    <th></th>
                     <th>
                         @Html.DisplayNameFor(model => model.NameOfGroup)
                     </th>
@@ -22,10 +23,10 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td style="width:65%">
+                        <td style="width:auto">
                             @Html.DisplayFor(modelItem => item.NameOfGroup)
                         </td>
-                        <td style="width:35%">
+                        <td style="float:left">
                             @Html.ActionLink("Edytuj", "Edit", new { id = item.GroupID }, new { @class = "btn btn-warning" })
                             @Html.ActionLink("Usuń", "Delete", new { id = item.GroupID }, new { @class = "btn btn-danger" })
                         </td>

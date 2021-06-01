@@ -4,7 +4,7 @@
     ViewData["Title"] = "Delete";
 }
 
-<h1>Usuń Grupę</h1>
+<h1 class="display-4">Usuń grupę</h1>
 
 <h3>Jesteś pewny że chcesz usunąć grupę?</h3>
 <div>
@@ -21,6 +21,6 @@
     <form asp-action="Delete">
         <input type="hidden" asp-for="GroupID" />
         <input type="submit" value="Usuń" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+        <a class="btn btn-dark" asp-action="Index">Wróć do listy</a>
     </form>
 </div>
