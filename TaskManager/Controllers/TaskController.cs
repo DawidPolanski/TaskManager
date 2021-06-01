@@ -57,7 +57,6 @@ namespace TaskManager.Controllers
         public ActionResult Edit(int id, TaskModel taskModel)
         {
             _taskRepository.Update(id, taskModel);
-
             return RedirectToAction(nameof(Index));
         }
 

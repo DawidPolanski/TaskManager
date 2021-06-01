@@ -19,8 +19,8 @@ namespace TaskManager.Repositories
         }
 
         public IQueryable<GroupsModel> GetAllGroups()
-            => _context.Groups.Where(x => !x.GroupVisible);
-
+            => _context.Groups;
+        
         public void Add(GroupsModel groups)
         {
             _context.Groups.Add(groups);
@@ -47,7 +47,6 @@ namespace TaskManager.Repositories
             if (result != null)
             {
                 result.NameOfGroup = groups.NameOfGroup;
-                result.GroupVisible = groups.GroupVisible;
                 _context.SaveChanges();
             }
         }

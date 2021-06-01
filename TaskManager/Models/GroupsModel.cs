@@ -17,6 +17,5 @@ namespace TaskManager.Models
         [MaxLength(50)]
         [Display(Name = "Nazwa grupy")]
         public string NameOfGroup { get; set; }
-        public bool GroupVisible { get; set; }
     }
 }

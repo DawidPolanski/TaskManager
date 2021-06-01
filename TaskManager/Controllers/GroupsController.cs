@@ -30,18 +30,17 @@ namespace TaskManager.Controllers
         // POST: GroupsController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-
+        public ActionResult Create()
+        {
+            return View(new GroupsModel());
+        }
 
         // GET: GroupsController/Edit/5
         public ActionResult Edit(int id)
         {
             return View(_groupsRepository.Get(id));
         }
-
-        public ActionResult Create()
-        {
-            return View(new GroupsModel());
-        }
+      
 
         // POST: GroupsController/Edit/5
         [HttpPost]
@@ -72,13 +71,6 @@ namespace TaskManager.Controllers
         public ActionResult Delete(int id, GroupsModel groupsModel)
         {
             _groupsRepository.Delete(id);
-            return RedirectToAction(nameof(Index));
-        }
-        public ActionResult GroupVisible(int id)
-        {
-            GroupsModel group = _groupsRepository.Get(id);
-            group.GroupVisible = true;
-            _groupsRepository.Update(id, group);
             return RedirectToAction(nameof(Index));
         }
     }
