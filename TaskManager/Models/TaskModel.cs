@@ -21,6 +21,7 @@ namespace TaskManager.Models
         [MaxLength(2000)]
         public string Description { get; set; }
         public bool Done { get; set; }
+       
         public int? GroupID { get; set; }
         [ForeignKey("GroupID")]
         public virtual GroupsModel Group { get; set; }

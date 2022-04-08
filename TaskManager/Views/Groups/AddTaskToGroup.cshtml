@@ -1,27 +1,15 @@
 ﻿@model IEnumerable<TaskManager.Models.GroupsModel>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "AddTaskToGroup";
 }
-
-<h1 class="display-4">Lista grup</h1>
-
 
 <div class="btn-group">
     <div class="shadow-lg p-3 mb-5 bg-white rounded">
+
         <table class="table">
             <thead>
-                <tr>
-                
-                    <th>
-                        @Html.DisplayNameFor(model => model.NameOfGroup)
-                    </th>
 
-                    <th>
-
-                    </th>
-                
-                </tr>
             </thead>
             <tbody>
                 @foreach (var item in Model)
@@ -31,8 +19,13 @@
                             @Html.DisplayFor(modelItem => item.NameOfGroup)
                         </td>
                         <td style="width:50%">
-                            @Html.ActionLink("Edytuj", "Edit", new { id = item.GroupID }, new { @class = "btn btn-warning" })
-                            @Html.ActionLink("Usuń", "Delete", new { id = item.GroupID }, new { @class = "btn btn-danger" })
+                            <form asp-controller="Groups" asp-action="AddToGroup" method="post">
+                                <div class="form-group">
+                                <input type="submit" action="AddToGroup" value="Dodaj" class="btn btn-primary" />
+                            </div>
+
+                            </form>
+                            
                         </td>
                     </tr>
                 }
@@ -41,3 +34,6 @@
     </div>
 </div>
 
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

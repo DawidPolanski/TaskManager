@@ -10,8 +10,9 @@ namespace TaskManager.Repositories
     { 
         GroupsModel Get(int groupId);
         void Add(GroupsModel groups);
-        void Update(int groupsId, GroupsModel groups);
-        void Delete(int groupsId);
+        void Update(int groupId, GroupsModel groups);
+        void Delete(int groupId);
         IQueryable<GroupsModel> GetAllGroups();
+        void AddToGroup(int taskId, int groupId);
     }
 }

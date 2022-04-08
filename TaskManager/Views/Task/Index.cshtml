@@ -37,15 +37,17 @@
             @foreach (var item in Model)
             {
                 <tr>
-                    <td style="width:65%">
+                    <td style="width:50%">
                         @Html.DisplayFor(modelItem => item.Name)
-                        @Html.DisplayFor(modelItem => item.Group.NameOfGroup)
                     </td>
-                    <td style="width:35%">
-                        @Html.ActionLink("Gotowe", "Done", new { id = item.TaskId }, new { @class = "btn btn-success" })
-                        @Html.ActionLink("Szczegóły", "Details", new { id = item.TaskId }, new { @class = "btn btn-info" })
-                        @Html.ActionLink("Edytuj", "Edit", new { id = item.TaskId }, new { @class = "btn btn-warning" })
-                        @Html.ActionLink("Usuń", "Delete", new { id = item.TaskId }, new { @class = "btn btn-danger" })
+                    <td style="width:50%">
+                        <a style="padding-left:50px">
+                            @Html.ActionLink("Gotowe", "Done", new { id = item.TaskId }, new { @class = "btn btn-success" })
+                            @Html.ActionLink("Szczegóły", "Details", new { id = item.TaskId }, new { @class = "btn btn-info" })
+                            @Html.ActionLink("Dodaj do grupy", "AddTaskToGroup", "Groups" ,new { id = item.TaskId }, new { @class = "btn btn-dark" })
+                            @Html.ActionLink("Edytuj", "Edit", new { id = item.TaskId }, new { @class = "btn btn-warning" })
+                            @Html.ActionLink("Usuń", "Delete", new { id = item.TaskId }, new { @class = "btn btn-danger" })
+                        </a>
                     </td>
                 </tr>
             }

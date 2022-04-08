@@ -24,8 +24,21 @@ namespace TaskManager.Controllers
             return View(_taskRepository.GetAllActivie());
         }
 
+        // GET: Task/Edit/5
+        public ActionResult Edit(int id)
+        {
+            return View(_taskRepository.Get(id));
+        }
+
+
         // GET: TaskController/Details/5
         public ActionResult Details(int id)
+        {
+            return View(_taskRepository.Get(id));
+        }
+
+        // GET: Task/Delete/5
+        public ActionResult Delete(int id)
         {
             return View(_taskRepository.Get(id));
         }
@@ -45,12 +58,6 @@ namespace TaskManager.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        // GET: Task/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View(_taskRepository.Get(id));
-        }
-
         // POST: Task/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -58,12 +65,6 @@ namespace TaskManager.Controllers
         {
             _taskRepository.Update(id, taskModel);
             return RedirectToAction(nameof(Index));
-        }
-
-        // GET: Task/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View(_taskRepository.Get(id));
         }
 
         // POST: Task/Delete/5

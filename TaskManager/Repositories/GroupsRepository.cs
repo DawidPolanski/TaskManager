@@ -27,6 +27,16 @@ namespace TaskManager.Repositories
             _context.SaveChanges();
         }
 
+        public void AddToGroup(int taskId, int groupID)
+        {
+            var result = _context.Tasks.SingleOrDefault(x => x.TaskId == taskId);
+            var getId = _context.Groups.SingleOrDefault(x => x.GroupID == groupID);
+            if (result != null && getId != null)
+            {
+                result.GroupID = getId.GroupID;
+                _context.SaveChanges();
+            }
+        }
         public void Delete(int groupsId)
         {
             var result = _context.Groups.SingleOrDefault(x => x.GroupID == groupsId);
