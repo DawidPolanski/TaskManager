@@ -13,7 +13,7 @@ namespace TaskManager.Models
     {
         [Key]
         public int TaskId { get; set; }
-        [DisplayName("Nazwa")]
+        [DisplayName("Nazwa zadania")]
         [Required(ErrorMessage = "Pole Nazwa jest wymagane!")]
         [MaxLength(50)]
         public string Name { get; set; }
@@ -21,7 +21,6 @@ namespace TaskManager.Models
         [MaxLength(2000)]
         public string Description { get; set; }
         public bool Done { get; set; }
-       
         public int? GroupID { get; set; }
         [ForeignKey("GroupID")]
         public virtual GroupsModel Group { get; set; }

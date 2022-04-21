@@ -7,30 +7,38 @@
 <div class="btn-group">
     <div class="shadow-lg p-3 mb-5 bg-white rounded">
 
-        <table class="table">
-            <thead>
-
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
+        @using (Html.BeginForm())
+        {
+            <table class="table">
+                <thead>
                     <tr>
-                        <td style="width:50%">
-                            @Html.DisplayFor(modelItem => item.NameOfGroup)
-                        </td>
-                        <td style="width:50%">
-                            <form asp-controller="Groups" asp-action="AddToGroup" method="post">
-                                <div class="form-group">
-                                <input type="submit" action="AddToGroup" value="Dodaj" class="btn btn-primary" />
-                            </div>
-
-                            </form>
-                            
-                        </td>
+                        <th>
+                            @Html.DisplayNameFor(model => model.NameOfGroup)
+                        </th>
                     </tr>
-                }
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.HiddenFor(modelItem => item.GroupID)
+                                @Html.DisplayFor(modelItem => item.NameOfGroup)
+                                <div style="float:right">
+                                    <form asp-controller="Groups" asp-action="AddTaskToGroup">
+                                        <a style="float:right">
+                                            @Html.ActionLink("Dodaj", "AddTaskToGroup", "Groups", new { groupId = item.GroupID }, new { @class = "btn btn-primary" })
+                                        </a>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        <input type="submit" value="Zatawierdź" class="btn btn-success" />
+        <a class="btn btn-dark" asp-action="Index">Wróć do listy grup</a>
     </div>
 </div>
 

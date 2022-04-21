@@ -25,6 +25,7 @@ namespace TaskManager.Repositories
             _context.Tasks.Add(task);
             _context.SaveChanges();
         }
+        
 
         public void Update(int taskId, TaskModel task)
         {

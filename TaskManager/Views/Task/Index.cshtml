@@ -27,27 +27,23 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Name)
                 </th>
-
-                <th>
-
-                </th>
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Model)
             {
                 <tr>
-                    <td style="width:50%">
+                    <td>
                         @Html.DisplayFor(modelItem => item.Name)
-                    </td>
-                    <td style="width:50%">
-                        <a style="padding-left:50px">
-                            @Html.ActionLink("Gotowe", "Done", new { id = item.TaskId }, new { @class = "btn btn-success" })
-                            @Html.ActionLink("Szczegóły", "Details", new { id = item.TaskId }, new { @class = "btn btn-info" })
-                            @Html.ActionLink("Dodaj do grupy", "AddTaskToGroup", "Groups" ,new { id = item.TaskId }, new { @class = "btn btn-dark" })
-                            @Html.ActionLink("Edytuj", "Edit", new { id = item.TaskId }, new { @class = "btn btn-warning" })
-                            @Html.ActionLink("Usuń", "Delete", new { id = item.TaskId }, new { @class = "btn btn-danger" })
-                        </a>
+                        <div style="float:right">
+                            <a style="padding-left:50px">
+                                @Html.ActionLink("Gotowe", "Done", new { id = item.TaskId }, new { @class = "btn btn-success" })
+                                @Html.ActionLink("Szczegóły", "Details", new { id = item.TaskId }, new { @class = "btn btn-info" })
+                                @Html.ActionLink("Dodaj do grupy", "AddTaskToGroup", "Groups", new { id = item.TaskId }, new { @class = "btn btn-dark" })
+                                @Html.ActionLink("Edytuj", "Edit", new { id = item.TaskId }, new { @class = "btn btn-warning" })
+                                @Html.ActionLink("Usuń", "Delete", new { id = item.TaskId }, new { @class = "btn btn-danger" })
+                            </a>
+                        </div>
                     </td>
                 </tr>
             }

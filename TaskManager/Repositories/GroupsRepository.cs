@@ -20,17 +20,20 @@ namespace TaskManager.Repositories
 
         public IQueryable<GroupsModel> GetAllGroups()
             => _context.Groups;
-        
+
+        public GroupsModel Get(int groupId)
+        => _context.Groups.SingleOrDefault(x => x.GroupID == groupId);
+
         public void Add(GroupsModel groups)
         {
             _context.Groups.Add(groups);
             _context.SaveChanges();
         }
 
-        public void AddToGroup(int taskId, int groupID)
+        public void AddToGroup(int taskId, int groupId)
         {
             var result = _context.Tasks.SingleOrDefault(x => x.TaskId == taskId);
-            var getId = _context.Groups.SingleOrDefault(x => x.GroupID == groupID);
+            var getId = _context.Groups.SingleOrDefault(x => x.GroupID == groupId);
             if (result != null && getId != null)
             {
                 result.GroupID = getId.GroupID;
@@ -46,11 +49,6 @@ namespace TaskManager.Repositories
                 _context.SaveChanges();
             }
         }
-
-        public GroupsModel Get(int groupId)
-        => _context.Groups.SingleOrDefault(x => x.GroupID == groupId);
-
-
         public void Update(int groupsId, GroupsModel groups)
         {
             var result = _context.Groups.SingleOrDefault(x => x.GroupID == groupsId);

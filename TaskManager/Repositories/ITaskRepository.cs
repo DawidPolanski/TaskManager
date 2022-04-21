@@ -13,6 +13,5 @@ namespace TaskManager.Repositories
         void Add(TaskModel task);
         void Update(int taskId , TaskModel task);
         void Delete(int taskId);
-        
     }
 }

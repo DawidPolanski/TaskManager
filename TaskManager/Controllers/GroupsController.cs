@@ -26,30 +26,24 @@ namespace TaskManager.Controllers
         {
             return View(_groupsRepository.GetAllGroups());
         }
-
-
         // POST: GroupsController/Create
         public ActionResult Create()
         {
             return View(new GroupsModel());
         }
-
         public ActionResult AddTaskToGroup()
         {
             return View(_groupsRepository.GetAllGroups());
         }
-
         // GET: GroupsController/Edit/5
         public ActionResult Edit(int id)
         {
             return View(_groupsRepository.Get(id));
         }
-
         public ActionResult Delete(int id)
         {
             return View(_groupsRepository.Get(id));
         }
-
         // POST: GroupsController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -58,12 +52,11 @@ namespace TaskManager.Controllers
             _groupsRepository.Update(id, groupsModel);
             return RedirectToAction(nameof(Index));
         }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AddToGroup(int taskId, int groupId)
+        public ActionResult AddTaskToGroup(int id, GroupsModel groupsModel)
         {
-            _groupsRepository.AddToGroup(groupId, taskId);
+            _groupsRepository.AddToGroup(id, groupsModel.GroupID);
             return RedirectToAction("Index", "Task");
 
         }
@@ -75,7 +68,6 @@ namespace TaskManager.Controllers
             _groupsRepository.Add(groupsModel);
             return RedirectToAction(nameof(Index));
         }
-
         // POST: GroupsController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
